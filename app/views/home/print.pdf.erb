@@ -1,0 +1,57 @@
+\thispagestyle{empty} % this page does not have a header
+\name{<%= @hash['name'] %>}
+\address{<%= @hash['address1']%>\\
+<%= @hash['address2']%>\\
+<%= @hash['phone1']%>\\
+\href{mailto:<%= @hash['email1'] %>}{<%= lesc @hash['email1']%>}}
+
+
+\begin{resume}
+
+\vspace{0.1in}
+\moveleft.5\sectionwidth\centerline{\it Objective: <%= @hash['objective'] %>.}
+\vspace{-0.2in}
+{\tiny <%= @hash['objective2'] %>}
+
+
+   \begin{tabbing}
+   \hspace{1.2in}\= \hspace{4.7in}\= \kill % set up two tab positions
+     \includegraphics[height=1in]{<%= File.join(Rails.root, "qr-github-myresume.png") %>}
+     \>
+     \includegraphics[height=2in]{<%= File.join(Rails.root, "hammady-skills-tagcloud.png") %>} 
+     \>
+     \includegraphics[height=1in]{<%= File.join(Rails.root, "qr-online-resume.png") %>}       \\
+
+   	\hspace{0in} {\scriptsize Download the app}
+   	\>
+   	\>
+   	\hspace{0in} {\scriptsize View Resume online}
+   \end{tabbing}\vspace{-0.3in}      % suppress blank line after tabbing
+
+\section{FREELANCING EXPERIENCE}
+<%= render :partial => "task", :collection => @freelancetasks %>
+
+\section{PROFESSIONAL EXPERIENCE}
+\vspace{0.2in}	
+<%= render :partial => "employer", :collection => @employers %>
+
+\section{EDUCATION}          
+\vspace{0.1in} 
+<%= render :partial => "education", :collection => @educations %>
+ 
+%\section{PUBLICATIONS}
+%<%= render :partial => "publication", :collection => @publications %>
+
+\section{EXTRACURRICULAR ACTIVIES} 
+\begin{itemize}
+<%= render :partial => "activity", :collection => @activities %>
+\end{itemize}
+
+\section{PERSONAL INFORMATION}
+
+<%= render :partial => "personalinfo", :collection => @personalinfo %>
+ 
+\section{REFERENCES \& RECOMMENDATIONS}
+References furnished upon request. Please check recommendations for me on LinkedIn.
+
+\end{resume}

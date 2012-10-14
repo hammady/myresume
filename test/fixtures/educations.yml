@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  year: 1
+  certificate: MyString
+  institute: MyString
+  description: MyString
+
+two:
+  year: 1
+  certificate: MyString
+  institute: MyString
+  description: MyString

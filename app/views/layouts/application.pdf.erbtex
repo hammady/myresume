@@ -1,0 +1,30 @@
+% LaTeX resume using res.cls
+\documentclass[10pt]{res}
+%\usepackage{helvetica} % uses helvetica postscript font (download helvetica.sty)
+%\usepackage{newcent}   % uses new century schoolbook postscript font  
+\setlength{\topmargin}{-0.6in}  % Start text higher on the page 
+\setlength{\textheight}{9.7in}  % increase textheight to fit more on a page
+\setlength{\headsep}{0.2in}     % space between header and text
+\setlength{\headheight}{12pt}   % make room for header
+\usepackage{fancyhdr}  % use fancyhdr package to get 2-line header
+\renewcommand{\headrulewidth}{0.5pt} % suppress line drawn by default by fancyhdr
+% \lhead{\hspace*{-\sectionwidth}<%= @hash['name'] %>} % force lhead all the way left
+\lhead{\hspace*{0in}<%= @hash['name'] %>} % force lhead all the way left
+\rhead{Page \thepage}  % put page number at right
+\cfoot{}  % the footer is empty
+\pagestyle{fancy} % set pagestyle for the document
+
+\setlength{\hoffset}{-.2in}
+\setlength{\textwidth}{6.7in}
+\setlength{\parindent}{0in}
+\setlength{\hangindent}{-1in}
+\setlength{\headwidth}{6.7in}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\begin{document} 
+
+<%= yield %>
+
+\end{document}
