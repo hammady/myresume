@@ -22,7 +22,18 @@ class HomeController < ApplicationController
     @publications = Publication.where(:enabled => :t).order("year DESC")
     @skills = Skill.find_all_by_enabled(:t)
     @personalinfo = Metadata.where(:enabled => :t, :standard => :f)
-    render formats: [:pdf]
+    begin
+      render formats: [:pdf]
+    rescue => e
+      self.content_type = 'text/html'
+      log = e.message.match('See (.*) for details')[1]
+      File.open(log) do |io|
+        render :text => "<h1>This is embarrasing!</h1><p>" \
+          "An error occured during pdflatex compilation. " \
+          "This should not happen, but if I were you, I would save this page " \
+          "and email it to pdflatexerror {at} hammady [dot] net</p><pre>#{io.read}</pre>"
+      end
+    end
   end
   
   def print_as_string
