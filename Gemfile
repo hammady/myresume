@@ -45,5 +45,5 @@ gem 'jquery-rails'
 gem 'activeadmin'
 gem 'country-select'
 gem 'jqcloud-rails'
-gem 'rails-latex'
+gem 'rails-latex', :git => 'git://github.com/hammady/rails-latex.git'
 

@@ -11,6 +11,8 @@ class HomeController < ApplicationController
   
   def print
     # PREPARE variables here and use in app/views/home/print.pdf.erb
+    # add supporting files
+    LatexToPdf.config[:supporting] = %w(res.cls helvetica.sty)
     @hash = {}
     Metadata.find_all_by_standard(:t).each do |metadata|
       @hash[metadata.key] = metadata.value
@@ -26,12 +28,16 @@ class HomeController < ApplicationController
       render formats: [:pdf]
     rescue => e
       self.content_type = 'text/html'
-      log = e.message.match('See (.*) for details')[1]
+      matches = e.message.match('See (.*) for details')
+      if matches and matches.length > 1
       File.open(log) do |io|
         render :text => "<h1>This is embarrasing!</h1><p>" \
           "An error occured during pdflatex compilation. " \
           "This should not happen, but if I were you, I would save this page " \
           "and email it to pdflatexerror {at} hammady [dot] net</p><pre>#{io.read}</pre>"
+      end
+      else
+        raise e
       end
     end
   end

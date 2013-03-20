@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/hammady/rails-latex.git
+  revision: c230bc1d41a8f49712ecdc6d4b2c065ab6433ba7
+  specs:
+    rails-latex (1.0.11)
+      rails (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -113,8 +120,6 @@ GEM
       activesupport (= 3.2.1)
       bundler (~> 1.0)
       railties (= 3.2.1)
-    rails-latex (1.0.11)
-      rails (>= 3.0.0)
     railties (3.2.1)
       actionpack (= 3.2.1)
       activesupport (= 3.2.1)
@@ -160,7 +165,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 3.2.1)
-  rails-latex
+  rails-latex!
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
