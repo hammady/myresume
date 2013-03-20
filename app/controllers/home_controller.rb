@@ -12,7 +12,7 @@ class HomeController < ApplicationController
   def print
     # PREPARE variables here and use in app/views/home/print.pdf.erb
     # add supporting files
-    LatexToPdf.config[:supporting] = %w(res.cls helvetica.sty)
+    LatexToPdf.config[:supporting] = %w(res.cls helvetica.sty url.sty)
     @hash = {}
     Metadata.find_all_by_standard(:t).each do |metadata|
       @hash[metadata.key] = metadata.value
