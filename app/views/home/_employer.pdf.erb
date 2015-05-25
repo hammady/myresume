@@ -5,4 +5,4 @@
     {\it <%= lesc employer.position_part(2) %>} \>{\bf <%= employer.country %>}
    \end{tabbing}\vspace{-.2in}      % suppress blank line after tabbing
 
-<%= render :partial => "task", :collection => employer.tasks.where(:enabled => true) %>
+<%= render :partial => "task", :collection => employer.tasks.where(:enabled => true).order("updated_at desc") %>
