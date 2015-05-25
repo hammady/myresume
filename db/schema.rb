@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013061128) do
+ActiveRecord::Schema.define(:version => 20150525082828) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -115,14 +115,16 @@ ActiveRecord::Schema.define(:version => 20121013061128) do
 
   create_table "tasks", :force => true do |t|
     t.string   "name"
-    t.string   "description", :limit => 1024
+    t.string   "description",     :limit => 1024
     t.integer  "employer_id"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.string   "link"
-    t.boolean  "enabled",                     :default => true
+    t.boolean  "enabled",                         :default => true
+    t.string   "opensource_type"
   end
 
   add_index "tasks", ["employer_id"], :name => "index_tasks_on_employer_id"
+  add_index "tasks", ["opensource_type"], :name => "index_tasks_on_opensource_type"
 
 end

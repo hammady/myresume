@@ -28,12 +28,20 @@
    	\hspace{0in} {\scriptsize View Resume online}
    \end{tabbing}\vspace{-0.3in}      % suppress blank line after tabbing
 
-\section{FREELANCING EXPERIENCE}
-<%= render :partial => "task", :collection => @freelancetasks %>
+<% if @opensources1.length + @opensources2.length > 0 %>
+  \section{OPEN SOURCE CONTRIBUTIONS}
+  <%= render :partial => "opensource_section", :locals =>
+    {:collection => @opensources1, :title => "Authored"} %>
+  <%= render :partial => "opensource_section", :locals =>
+    {:collection => @opensources2, :title => "Contributed to"} %>
+<% end %>
 
 \section{PROFESSIONAL EXPERIENCE}
 \vspace{0.2in}	
 <%= render :partial => "employer", :collection => @employers %>
+
+\section{FREELANCING EXPERIENCE}
+<%= render :partial => "task", :collection => @freelancetasks %>
 
 \section{EDUCATION}          
 \vspace{0.1in} 
