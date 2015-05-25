@@ -22,7 +22,7 @@ class HomeController < ApplicationController
     @opensources2 = opensources.where("opensource_type = ?", "contrib")
     @educations = Education.find_all_by_enabled(:t)
     @employers = Employer.where(:enabled => 't').order("id DESC")
-    @freelancetasks = Task.where("employer_id is null").where("opensource_type is null").order("updated_at desc")
+    @freelancetasks = Task.where("employer_id is null").order("updated_at desc").select{|t|t.opensource_type.blank?}
     @activities = Activity.find_all_by_enabled(:t)
     @publications = Publication.where(:enabled => :t).order("year DESC")
     @skills = Skill.find_all_by_enabled(:t)
