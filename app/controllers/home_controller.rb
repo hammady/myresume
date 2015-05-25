@@ -27,6 +27,8 @@ class HomeController < ApplicationController
     @publications = Publication.where(:enabled => :t).order("year DESC")
     @skills = Skill.find_all_by_enabled(:t)
     @personalinfo = Metadata.where(:enabled => :t, :standard => :f)
+    @last_updated_at = last_updated_at.to_date 
+    @generated_at = Time.now.to_date
     begin
       render formats: [:pdf]
     rescue => e
@@ -55,4 +57,13 @@ class HomeController < ApplicationController
 
     render text: "wrote #{file}"
   end
+
+private
+
+  def last_updated_at
+    [Activity, Education, Employer, Metadata, Publication, Skill, Task]
+    .map{|klass| klass.maximum(:updated_at)}
+    .max
+  end
+
 end
