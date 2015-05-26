@@ -28,7 +28,6 @@ class HomeController < ApplicationController
     @skills = Skill.find_all_by_enabled(:t)
     @personalinfo = Metadata.where(:enabled => :t, :standard => :f)
     @last_updated_at = last_updated_at.to_date 
-    @generated_at = Time.now.to_date
     begin
       render formats: [:pdf]
     rescue => e
