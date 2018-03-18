@@ -8,25 +8,18 @@
 
 \begin{resume}
 
+<% if @hash['objective'] %>
 \vspace{0.1in}
 \moveleft.5\sectionwidth\centerline{\it Objective: <%= @hash['objective'] %>.}
-\vspace{-0.2in}
-{\tiny <%= @hash['objective2'] %>}
+  <% if @hash['objective2'] %>
+  \vspace{-0.2in}
+  {\tiny <%= @hash['objective2'] %>}
+  <% end %>
+<% end %>
 
-
-   \begin{tabbing}
-   \hspace{1.2in}\= \hspace{4.7in}\= \kill % set up two tab positions
-     \includegraphics[height=1in]{<%= File.join(Rails.root, "qr-github-myresume.png") %>}
-     \>
-     \hspace{0.3in} \includegraphics[height=1.6in]{<%= File.join(Rails.root, "hammady-skills-tagcloud.png") %>} 
-     \>
-     \includegraphics[height=1in]{<%= File.join(Rails.root, "qr-online-resume.png") %>}       \\
-
-   	\hspace{0in} {\scriptsize Download the app}
-   	\>
-   	\>
-   	\hspace{0in} {\scriptsize View Resume online}
-   \end{tabbing}\vspace{-0.3in}      % suppress blank line after tabbing
+\begin{figure}[h]
+\centering \includegraphics[height=1.6in]{<%= File.join(Rails.root, "hammady-skills-tagcloud.png") %>} 
+\end{figure}
 
 <% if @opensources1.length + @opensources2.length > 0 %>
   \section{OPEN SOURCE CONTRIBUTIONS}
