@@ -14,7 +14,7 @@ class HomeController < ApplicationController
     # add supporting files
     LatexToPdf.config[:supporting] = %w(res.cls helvetica.sty url.sty)
     @hash = {}
-    Metadata.find_all_by_standard(:t).each do |metadata|
+    Metadata.where(standard: true, enabled: true).each do |metadata|
       @hash[metadata.key] = metadata.value
     end
     opensources = Task.where(:enabled => :t).where("employer_id is null").where("opensource_type is not null").order("updated_at desc")
