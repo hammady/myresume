@@ -27,7 +27,7 @@ class HomeController < ApplicationController
     @publications = Publication.where(:enabled => :t).order("year DESC")
     @skills = Skill.where(:enabled => 't')
     @personalinfo = Metadata.where(:enabled => :t, :standard => :f)
-    @last_updated_at = last_updated_at.to_date 
+    @last_updated_at = last_updated_at.try(:to_date) 
     begin
       render formats: [:pdf]
     rescue => e

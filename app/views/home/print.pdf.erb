@@ -29,32 +29,40 @@
     {:collection => @opensources2, :title => "Contributed to"} %>
 <% end %>
 
+<% if @employers.length > 0 %>
 \section{PROFESSIONAL EXPERIENCE}
 \vspace{0.2in}	
 <%= render :partial => "employer", :collection => @employers %>
+<% end %>
 
+<% if @freelancetasks.length > 0 %>
 \section{FREELANCING EXPERIENCE}
 <%= render :partial => "task", :collection => @freelancetasks %>
+<% end %>
 
+<% if @educations.length > 0 %>
 \section{EDUCATION}          
 \vspace{0.1in} 
 <%= render :partial => "education", :collection => @educations %>
- 
+<% end %>
+
+<% if @publications.length > 0 %>
 \section{PUBLICATIONS}
 <%= render :partial => "publication", :collection => @publications %>
+<% end %>
 
+<% if @activities.length > 0 %>
 \section{EXTRACURRICULAR ACTIVIES} 
 \begin{itemize}
 <%= render :partial => "activity", :collection => @activities %>
 \end{itemize}
+<% end %>
 
+<% if @personalinfo.length > 0 %>
 \section{PERSONAL INFORMATION}
-
 <%= render :partial => "personalinfo", :collection => @personalinfo %>
+<% end %>
  
-\section{REFERENCES \& RECOMMENDATIONS}
-References furnished upon request. Please check recommendations for me on LinkedIn.
-
 \cfoot{
 Last updated: <%= @last_updated_at %>
 }
