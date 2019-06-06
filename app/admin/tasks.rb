@@ -1,4 +1,5 @@
 ActiveAdmin.register Task do
+  permit_params :name, :description, :employer_id, :link, :enabled, :opensource_type
   form do |f|
     f.inputs do
       f.input :employer, :label => "Employer (leave blank for freelancing)"
@@ -8,6 +9,6 @@ ActiveAdmin.register Task do
       f.input :link
       f.input :enabled
     end
-    f.buttons
+    f.actions
   end
 end
