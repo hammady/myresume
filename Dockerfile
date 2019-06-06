@@ -28,7 +28,8 @@ COPY / /home/
 
 RUN bundle exec rake assets:precompile
 
-RUN useradd -m webuser
+RUN useradd -d /home webuser && \
+    chown webuser:webuser /home
 USER webuser
 
 EXPOSE 8080
