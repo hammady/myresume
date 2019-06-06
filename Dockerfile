@@ -1,4 +1,4 @@
-FROM ruby:1.9
+FROM ruby:2.6
 
 LABEL maintainer="Hossam Hammady <github@hammady.net>"
 

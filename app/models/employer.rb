@@ -1,6 +1,4 @@
 class Employer < ActiveRecord::Base
-  attr_accessible :name, :from, :to, :position, :country, :link, :enabled
-  
   has_many :tasks
   
   def fromyear

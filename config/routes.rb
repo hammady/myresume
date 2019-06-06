@@ -1,4 +1,4 @@
-Myresume::Application.routes.draw do
+Rails.application.routes.draw do
   get "resumes/index"
 
   get "resumes/new"
@@ -13,23 +13,11 @@ Myresume::Application.routes.draw do
 
   get "home/index"
   
-  match 'home/print' => "home#print"
-  match 'home/print_as_string' => "home#print_as_string"
-
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  get 'home/print'
+  get 'home/print_as_string'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
@@ -71,9 +59,9 @@ Myresume::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => 'home#index'
 
-  # See how all your routes lay out with "rake routes"
+  devise_for :admin_users, ActiveAdmin::Devise.config
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  ActiveAdmin.routes(self)
+
+  # See how all your routes lay out with "rake routes"
 end

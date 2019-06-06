@@ -1,4 +1,4 @@
-class AddEnabledToTables < ActiveRecord::Migration
+class AddEnabledToTables < ActiveRecord::Migration[4.2]
   def change
     add_column :employers, :enabled, :boolean, :default => :t
     add_column :tasks, :enabled, :boolean, :default => :t
