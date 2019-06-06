@@ -213,4 +213,10 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+
+  if $*[0] == 'assets:precompile'
+    config.secret_key = 'PLACEHOLDER'
+  else
+    config.secret_key = ENV['SECRET_KEY_BASE']
+  end
 end
