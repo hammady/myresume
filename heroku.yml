@@ -1,0 +1,7 @@
+setup:
+  addons:
+    - plan: heroku-postgresql:hobby-dev
+    - plan: logentries:le_tryit
+build:
+  docker:
+    web: Dockerfile
