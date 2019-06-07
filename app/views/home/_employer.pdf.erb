@@ -2,7 +2,7 @@
    \begin{tabbing}
    \hspace{2in}\= \hspace{3.5in}\= \kill % set up two tab positions
     {\it <%= lesc employer.position_part(1) %>} \>{\bf \href{<%= employer.link %>} {<%=  lesc employer.name %>}}     \>{\it <%= employer.fromyear %> - <%= employer.toyear %>}\\
-    {\it <%= lesc employer.position_part(2) %>} \>{\bf <%= employer.country %>}
+    {\it <%= lesc employer.position_part(2) %>}
    \end{tabbing}\vspace{-.2in}      % suppress blank line after tabbing
 
 <%= render :partial => "task", :collection => employer.tasks.where(:enabled => true).order("updated_at desc") %>
