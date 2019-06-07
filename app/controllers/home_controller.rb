@@ -17,16 +17,16 @@ class HomeController < ApplicationController
     Metadata.where(standard: true, enabled: true).each do |metadata|
       @hash[metadata.key] = metadata.value
     end
-    opensources = Task.where(:enabled => :t).where("employer_id is null").where("opensource_type is not null").order("updated_at desc")
+    opensources = Task.where(:enabled => 't').where("employer_id is null").where("opensource_type is not null").order("updated_at desc")
     @opensources1 = opensources.where("opensource_type = ?", "main")
     @opensources2 = opensources.where("opensource_type = ?", "contrib")
     @educations = Education.where(:enabled => 't')
     @employers = Employer.where(:enabled => 't').order("id DESC")
-    @freelancetasks = Task.where("employer_id is null").where(:enabled => :t).order("updated_at desc").select{|t|t.opensource_type.blank?}
+    @freelancetasks = Task.where("employer_id is null").where(:enabled => 't').order("updated_at desc").select{|t|t.opensource_type.blank?}
     @activities = Activity.where(:enabled => 't')
-    @publications = Publication.where(:enabled => :t).order("year DESC")
+    @publications = Publication.where(:enabled => 't').order("year DESC")
     @skills = Skill.where(:enabled => 't')
-    @personalinfo = Metadata.where(:enabled => :t, :standard => :f)
+    @personalinfo = Metadata.where(:enabled => 't', :standard => 'f')
     @last_updated_at = last_updated_at.try(:to_date) 
     begin
       render formats: [:pdf]
