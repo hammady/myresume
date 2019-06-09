@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get "home/index"
   
   get 'home/print'
-  get 'home/print_as_string'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

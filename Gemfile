@@ -27,3 +27,5 @@ gem 'activeadmin'
 gem 'country-select'
 gem 'jqcloud-rails'
 gem 'rails-latex', :git => 'git://github.com/hammady/rails-latex.git'
+
+gem 'aws-sdk-s3', '~> 1'
