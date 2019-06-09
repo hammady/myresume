@@ -24,4 +24,8 @@ class Employer < ActiveRecord::Base
       nil
     end
   end
+
+  def display_name
+    "#{self.name}: #{self.position}"
+  end
 end
