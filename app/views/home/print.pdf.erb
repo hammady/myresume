@@ -1,10 +1,21 @@
 \thispagestyle{empty} % this page does not have a header
-\name{<%= @hash['name'] %>}
-\address{<%= @hash['address1']%>\\
+\name{<%= @hash['name'] || "Missing standard metadata: name" %>}
+\address{<%= @hash['address1'] || "Missing standard metadata: address1" %>\\
+<% if @hash['address2'] %>
 <%= @hash['address2']%>\\
+<% end %>
+<% if @hash['phone1'] %>
 <%= @hash['phone1']%>\\
-\href{mailto:<%= @hash['email1'] %>}{<%= lesc @hash['email1']%>}}
-
+<% end %>
+<% if @hash['phone2'] %>
+<%= @hash['phone2']%>\\
+<% end %>
+<% if @hash['email1'] %>
+\href{mailto:<%= @hash['email1'] %>}{<%= lesc @hash['email1']%>}\\
+<% end %>
+<% if @hash['email2'] %>
+\href{mailto:<%= @hash['email2'] %>}{<%= lesc @hash['email2']%>}\\
+<% end %>}
 
 \begin{resume}
 

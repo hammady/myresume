@@ -21,8 +21,10 @@ class ApplicationController < ActionController::Base
     @personalinfo = Metadata.where(:enabled => 't', :standard => 'f')
     @last_updated_at = [Activity, Education, Employer, Metadata, Publication, Skill, Task]
       .map{|klass| klass.maximum(:updated_at)}
+      .compact
       .max
       .try(:to_date)
+    Rails.logger.info("Last update at: " + @last_updated_at.to_s)
   end        
 
 end
